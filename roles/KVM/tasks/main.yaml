@@ -1,0 +1,18 @@
+---
+- name: Task kvm_install.yaml
+  import_tasks: kvm_install.yaml
+
+- name: Task kvm_network.yaml
+  import_tasks: kvm_network.yaml
+
+- name: Task kvm_image.yaml
+  import_tasks: kvm_image.yaml
+
+- name: Task kvm_vms_free5gc.yaml
+  import_tasks: kvm_vms_free5gc.yaml
+
+- name: Task kvm_vms_ueransim.yaml
+  import_tasks: kvm_vms_ueransim.yaml
+
+- name: Task kvm_vm_mininet.yaml
+  import_tasks: kvm_vm_mininet.yaml

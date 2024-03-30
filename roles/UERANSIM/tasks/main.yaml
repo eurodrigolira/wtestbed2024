@@ -1,0 +1,19 @@
+---
+- name: Instalação das dependências do UERANSIM.
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    update_cache: yes
+  loop: "{{ packages }}"
+
+- name: Instalando o cmake via snap.
+  ansible.builtin.shell: snap install cmake --classic 
+
+- name: Clonando o repositório do UERANSIM.
+  ansible.builtin.git:
+    repo: 'https://github.com/aligungr/UERANSIM'
+    dest: /home/administrador/UERANSIM
+
+- name: Instalando o UERANSIM.
+  ansible.builtin.shell: make
+  args:
+    chdir: /home/administrador/UERANSIM/

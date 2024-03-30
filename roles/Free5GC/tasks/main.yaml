@@ -1,0 +1,34 @@
+---
+# tasks file for Free5GC
+- name: Instalando o GO.
+  ansible.builtin.unarchive:
+    src: 'https://dl.google.com/go/go1.18.10.linux-amd64.tar.gz'
+    dest: /usr/local
+    remote_src: yes
+
+- name: Configurando o ambiente do GO.
+  ansible.builtin.shell: |
+    echo 'export GOPATH=$HOME/go' >> ~/.bashrc
+    echo 'export GOROOT=/usr/local/go' >> ~/.bashrc
+    echo 'export PATH=$PATH:$GOPATH/bin:$GOROOT/bin' >> ~/.bashrc
+    echo 'export GO111MODULE=auto' >> ~/.bashrc
+  args:
+    chdir: /home/administrador/
+
+- name: Create um link simbolico para o GO
+  ansible.builtin.file:
+    src: /usr/local/go/bin/go
+    dest: /sbin/go
+    state: link
+
+- name: Task c-plane.yaml
+  import_tasks: c-plane.yaml
+  when: inventory_hostname in groups['CPlane']
+
+- name: Task u-plane.yaml
+  import_tasks: u-plane.yaml
+  when: inventory_hostname in groups['UPlane']
+
+- name: Task webconsole.yaml
+  import_tasks: webconsole.yaml
+  when: inventory_hostname in groups['CPlane']

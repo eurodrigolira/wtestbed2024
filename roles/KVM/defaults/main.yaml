@@ -1,0 +1,11 @@
+---
+# kvm_install.yaml
+packages:
+  - bridge-utils
+  - libvirt-clients
+  - libvirt-daemon
+  - qemu
+  - qemu-kvm
+  - virt-manager
+  - uvtool
+  - uvtool-libvirt

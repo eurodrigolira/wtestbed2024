@@ -1,0 +1,39 @@
+---
+# tasks file for Free5GC
+- name: Instalação das dependências do Free5GC U-Plane.
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    update_cache: yes
+  loop: "{{ packages_uplane }}"
+
+- name: Configurando o net.ipv4.ip_forward=1
+  ansible.posix.sysctl:
+    name: net.ipv4.ip_forward
+    value: '1'
+    sysctl_set: yes
+    state: present
+    reload: yes
+
+- name: Git clone no repositório do GTP
+  ansible.builtin.git:
+    repo: 'https://github.com/free5gc/gtp5g.git'
+    dest: /home/administrador/gtp5g
+    version: v0.8.5
+
+- name: Instalando todas as funções de rede do Free5GC.
+  ansible.builtin.shell: |
+    make
+    make install
+  args:
+    chdir: /home/administrador/gtp5g/
+
+- name: Git clone no repositório do Free5GC 
+  ansible.builtin.git:
+    repo: 'https://github.com/free5gc/free5gc.git'
+    dest: /home/administrador/free5gc
+    version: v3.3.0
+
+- name: Instalando todas as funções de rede do Free5GC.
+  ansible.builtin.shell: make upf
+  args:
+    chdir: /home/administrador/free5gc/

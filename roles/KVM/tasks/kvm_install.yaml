@@ -1,0 +1,6 @@
+---
+- name: Instalação do KVM
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    update_cache: yes
+  loop: "{{ packages }}"

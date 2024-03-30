@@ -1,0 +1,8 @@
+---
+- name: Clonando o repositório do Mininet
+  ansible.builtin.git:
+    repo: 'https://github.com/mininet/mininet'
+    dest: /home/administrador/mininet
+
+- name: Instalando o Mininet.
+  ansible.builtin.shell: /home/administrador/mininet/util/install.sh -a

@@ -1,0 +1,19 @@
+---
+# tasks file for Free5GC
+- name: Instalando o repositório do nodejs para o webconsole do Free5GC.
+  ansible.builtin.shell: curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+  args:
+    chdir: /home/administrador/free5gc/
+
+- name: Instalando o nodejs para o webconsole do Free5GC.
+  ansible.builtin.apt:
+    name: nodejs
+    update_cache: yes
+
+- name: Configurando o yarn do nodejs.
+  ansible.builtin.shell: corepack enable
+
+- name: Instalando o webconsole do Free5GC.
+  ansible.builtin.shell: make webconsole
+  args:
+    chdir: /home/administrador/free5gc/

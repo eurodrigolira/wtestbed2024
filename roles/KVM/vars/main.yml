@@ -1,0 +1,74 @@
+---
+# kvm_network.yaml
+network_nat:
+  - name: ifpb
+    bridge: virbr10
+    ip: "192.168.123.1"
+    mask: "255.255.255.0"
+    range_start: "192.168.123.128"
+    range_end: "192.168.123.254"
+network:
+  - name: ifpb-s1
+    bridge: virbr11
+  - name: ifpb-s2
+    bridge: virbr12
+  - name: ifpb-s3
+    bridge: virbr13
+  - name: ifpb-s4
+    bridge: virbr14
+
+# kvm_image.yaml
+release: jammy
+
+# kvm_vms_free5gc.yaml
+vms_free5gc:
+  - name: ifpb-c-plane
+    memory: "2048"
+    cpu: "1"
+    disk: "20"
+    mac: "52:54:00:ab:cd:01"
+  - name: ifpb-u-plane1
+    memory: "2048"
+    cpu: "1"
+    disk: "20"
+    mac: "52:54:00:ab:cd:02"
+  - name: ifpb-u-plane2
+    memory: "2048"
+    cpu: "1"
+    disk: "20"
+    mac: "52:54:00:ab:cd:03"
+
+# kvm_vms_ueransim.yaml
+vms_ueransim:
+  - name: ifpb-ue1
+    memory: "2048"
+    cpu: "1"
+    disk: "20"
+    mac: "52:54:01:ab:cd:01"
+  - name: ifpb-ue2
+    memory: "2048"
+    cpu: "1"
+    disk: "20"
+    mac: "52:54:01:ab:cd:02"
+  - name: ifpb-gnb
+    memory: "2048"
+    cpu: "1"
+    disk: "20"
+    mac: "52:54:01:ab:cd:03"
+
+# kvm_vms_mininet.yaml
+vms_mininet:
+  - name: ifpb-mininet
+    int1: ifpb
+    mac1: "52:54:02:ab:cd:01"
+    int2: ifpb-s1
+    mac2: "52:54:02:ab:cd:02"
+    int3: ifpb-s2
+    mac3: "52:54:02:ab:cd:03"
+    int4: ifpb-s3
+    mac4: "52:54:02:ab:cd:04"
+    int5: ifpb-s4
+    mac5: "52:54:02:ab:cd:05"
+    memory: "4096"
+    cpu: "2"
+    disk: "20"

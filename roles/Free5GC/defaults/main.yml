@@ -1,0 +1,17 @@
+---
+go_url: "https://dl.google.com/go/go1.18.10.linux-amd64.tar.gz"
+
+packages_cplane:
+  - wget
+  - curl
+  - gnupg
+  - make
+
+packages_uplane:
+  - gcc
+  - g++
+  - cmake
+  - autoconf
+  - pkg-config
+  - libmnl-dev
+  - libyaml-dev

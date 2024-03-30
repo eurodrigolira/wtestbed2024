@@ -1,0 +1,32 @@
+---
+- name: Instalação das dependências do Free5GC C-Plane.
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    update_cache: yes
+  loop: "{{ packages_cplane }}"
+
+- name: Instalando chave GPG MongoDB.
+  ansible.builtin.apt_key:
+    url: https://www.mongodb.org/static/pgp/server-7.0.asc
+    keyring: /usr/share/keyrings/mongodb-server-7.0.gpg
+
+- name: Instalando o repositório do MongoDB.
+  ansible.builtin.apt_repository:
+    repo: "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse"
+    state: present
+
+- name: Instalação o MongoDB no C-Plane.
+  ansible.builtin.apt:
+    name: mongodb-org
+    update_cache: yes
+
+- name: Git clone no repositório do Free5GC 
+  ansible.builtin.git:
+    repo: 'https://github.com/free5gc/free5gc.git'
+    dest: /home/administrador/free5gc
+    version: v3.3.0
+
+- name: Instalando todas as funções de rede do Free5GC.
+  ansible.builtin.shell: make
+  args:
+    chdir: /home/administrador/free5gc/

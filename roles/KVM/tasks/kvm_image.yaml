@@ -1,0 +1,2 @@
+- name: Baixando a cloud image.
+  ansible.builtin.shell: /usr/bin/uvt-simplestreams-libvirt sync release="{{ release }}" arch=amd64
