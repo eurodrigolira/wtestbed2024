@@ -7,25 +7,8 @@
 
   tasks:
 
-    - import_role:
-        name: KVM
-      when: inventory_hostname in groups['KVM']
+    - name: Playbook Infraestrutura
+      import_playbook: playbook_infraestrutura.yaml
 
-    - name: Pausa por 2 minutos para as VMS subirem.
-      ansible.builtin.pause:
-        minutes: 2    
-      
-    - import_role:
-        name: Mininet
-      when: inventory_hostname in groups['Mininet']
-    
-    - import_role:
-        name: Free5GC
-      when: inventory_hostname in groups['Free5GC']
-
-    - import_role:
-        name: UERANSIM
-      when: inventory_hostname in groups['UERANSIM']
-
-#    - import_role:
-#        name: UpTestbed
+    - name: Playbook 5G
+      import_playbook: playbook_5g.yaml
