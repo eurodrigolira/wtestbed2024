@@ -1,14 +1,6 @@
 ---
-- name: Roles Playbook
-  hosts: all
-  remote_user: administrador
-  become: true
-  gather_facts: no
+- name: Playbook Infraestrutura
+  ansible.builtin.import_playbook: infraestrutura.yaml
 
-  tasks:
-
-    - name: Playbook Infraestrutura
-      import_playbook: playbook_infraestrutura.yaml
-
-    - name: Playbook 5G
-      import_playbook: playbook_5g.yaml
+#- name: Playbook 5G
+#  ansible.builtin.import_playbook: 5g.yaml

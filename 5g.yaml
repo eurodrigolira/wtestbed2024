@@ -1,0 +1,11 @@
+---
+- name: Playbook 5G
+  hosts: all
+  remote_user: administrador
+  become: true
+  gather_facts: no
+
+  tasks:
+
+    - ansible.builtin.import_role:
+        name: 5g.yaml
