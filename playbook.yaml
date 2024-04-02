@@ -1,6 +1,6 @@
 ---
-#- name: Playbook Infraestrutura
-#  ansible.builtin.import_playbook: infraestrutura.yaml
+- name: Playbook Infraestrutura
+  ansible.builtin.import_playbook: infraestrutura.yaml
 
 - name: Playbook 5G
   ansible.builtin.import_playbook: 5g.yaml
