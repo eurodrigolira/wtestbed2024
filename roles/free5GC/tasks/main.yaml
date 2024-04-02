@@ -29,6 +29,6 @@
   import_tasks: u-plane.yaml
   when: inventory_hostname in groups['UPlane']
 
-- name: Task webconsole.yaml
-  import_tasks: webconsole.yaml
-  when: inventory_hostname in groups['CPlane']
+#- name: Task webconsole.yaml
+#  import_tasks: webconsole.yaml
+#  when: inventory_hostname in groups['CPlane']

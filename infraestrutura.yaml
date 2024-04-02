@@ -20,7 +20,7 @@
       when: inventory_hostname in groups['Mininet']
     
     - ansible.builtin.import_role:
-        name: Free5GC
+        name: free5GC
       when: inventory_hostname in groups['Free5GC']
 
     - ansible.builtin.import_role:
