@@ -1,0 +1,6 @@
+---
+- name: Copia o arquivo free5gc-gnb.yaml para gNB
+  ansible.builtin.copy:
+    src: files/free5gc-gnb.yaml
+    dest: /home/administrador/UERANSIM/config/free5gc-gnb.yaml
+

@@ -1,0 +1,29 @@
+---
+- name: Task c-plane.yaml
+  ansible.builtin.import_tasks: c-plane.yaml
+  when: inventory_hostname == "ifpb-c-plane"
+
+- name: Task u-plane1.yaml
+  ansible.builtin.import_tasks: u-plane1.yaml
+  when: inventory_hostname == "ifpb-u-plane1"
+
+- name: Task u-plane2.yaml
+  ansible.builtin.import_tasks: u-plane2.yaml
+  when: inventory_hostname == "ifpb-u-plane2"
+
+- name: Task gnb.yaml
+  ansible.builtin.import_tasks: gnb.yaml
+  when: inventory_hostname == "ifpb-gnb"
+
+- name: Task ue1.yaml
+  ansible.builtin.import_tasks: ue1.yaml
+  when: inventory_hostname == "ifpb-ue1"
+
+- name: Task ue2.yaml
+  ansible.builtin.import_tasks: ue2.yaml
+  when: inventory_hostname == "ifpb-ue2"
+
+#- name: Task mininet.yaml
+#  ansible.builtin.import_tasks: mininet.yaml
+#  when: inventory_hostname == "ifpb-mininet"
+

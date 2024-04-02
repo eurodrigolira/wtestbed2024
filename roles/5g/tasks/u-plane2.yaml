@@ -1,0 +1,6 @@
+---
+- name: Copia o arquivo upfcfg.yaml para U-Plane2
+  ansible.builtin.copy:
+    src: files/upfcfg-u-plane2.yaml
+    dest: /home/administrador/free5gc/config/upfcfg.yaml
+

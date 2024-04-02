@@ -1,0 +1,6 @@
+---
+- name: Copia o arquivo free5gc-ue1.yaml para UE2
+  ansible.builtin.copy:
+    src: files/free5gc-ue2.yaml
+    dest: /home/administrador/UERANSIM/config/free5gc-ue2.yaml
+

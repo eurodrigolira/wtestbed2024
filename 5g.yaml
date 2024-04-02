@@ -8,4 +8,4 @@
   tasks:
 
     - ansible.builtin.import_role:
-        name: 5g.yaml
+        name: 5g

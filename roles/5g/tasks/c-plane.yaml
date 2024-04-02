@@ -1,0 +1,28 @@
+---
+- name: Copia o arquivo amfcfg.yaml para C-Plane
+  ansible.builtin.copy:
+    src: files/amfcfg.yaml
+    dest: /home/administrador/free5gc/config/amfcfg.yaml
+
+- name: Copia o arquivo ausfcfg.yaml C-Plane
+  ansible.builtin.copy:
+    src: files/ausfcfg.yaml
+    dest: /home/administrador/free5gc/config/ausfcfg.yaml
+
+- name: Copia o arquivo nrfcfg.yaml C-Plane
+  ansible.builtin.copy:
+    src: files/nrfcfg.yaml
+    dest: /home/administrador/free5gc/config/nrfcfg.yaml
+
+
+- name: Copia o arquivo nssfcfg.yaml C-Plane
+  ansible.builtin.copy:
+    src: files/nssfcfg.yaml
+    dest: /home/administrador/free5gc/config/nssfcfg.yaml
+
+
+- name: Copia o arquivo smfcfg.yaml C-Plane
+  ansible.builtin.copy:
+    src: files/smfcfg.yaml
+    dest: /home/administrador/free5gc/config/smfcfg.yaml
+
